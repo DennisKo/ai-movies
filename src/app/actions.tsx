@@ -94,7 +94,6 @@ export async function getMovies(messages: Message[], usedMovies: string) {
             } else {
               movieCache.append(`"${items[itemIndex].title}",`);
               movieUI.append(<Movie {...items[itemIndex]} />);
-              gridUI.update(<MovieGrid movies={movieUI.value} />);
             }
             itemIndex++;
             tempContent = `,{"`;
@@ -106,7 +105,7 @@ export async function getMovies(messages: Message[], usedMovies: string) {
             items.push(JSON.parse(itemContent));
             movieCache.append(`"${items[itemIndex].title}"`);
             movieUI.append(<Movie {...items[itemIndex]} />);
-            gridUI.done(<MovieGrid movies={movieUI.value} />);
+            gridUI.done();
             movieUI.done();
             movieState.done('done');
             movieCache.done();
